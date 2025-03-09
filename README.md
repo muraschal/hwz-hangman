@@ -5,13 +5,14 @@
 ![HWZ Hangman Game](./public/images/preview.svg)
 
 ```
-  +--------+
-  |/       |
-  |        O       H W Z - H A N G M A N
-  |       /|\      =====================
-  |       / \      Executive MBA Edition
-  |               
-  +==============+
++----------+
+|          |
+|          |
+|    0     |    H W Z - H A N G M A N
+|   /|\    |    =====================
+|   / \    |    Executive MBA Edition
+|          |
++===========+
 ```
 
 Ein modernes, interaktives Hangman-Spiel mit einer hochwertigen Glassmorphism-Benutzeroberfläche, speziell entwickelt für den Executive MBA (EMBA) der HWZ.
@@ -145,12 +146,14 @@ Dieses Projekt ist unter der [MIT-Lizenz](LICENSE) lizenziert.
 Entwickelt für die HWZ - Hochschule für Wirtschaft Zürich | Executive MBA Programm
 
 ```
-     _____
-    |     |
-    |     O
-   \|/   /|\    Viel Spaß beim Spielen!
-    |    / \    Drücke 5x Leertaste für eine Überraschung...
-   / \
++----------+
+|          |
+|          |
+|    0     |    H W Z - H A N G M A N
+|   /|\    |    =====================
+|   / \    |    Executive MBA Edition
+|          |
++===========+
 ```
 
 </div> 
