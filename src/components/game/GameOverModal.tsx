@@ -25,6 +25,30 @@ const GameOverModal: React.FC<GameOverModalProps> = ({
 }) => {
   const isWon = gameStatus === 'won';
   
+  // Verhindere Scrolling auf mobilen Geräten, wenn das Modal geöffnet ist
+  useEffect(() => {
+    if (isOpen) {
+      // Speichere die aktuelle Scroll-Position
+      const scrollY = window.scrollY;
+      
+      // Verhindere Scrolling durch Fixieren des Body
+      document.body.style.position = 'fixed';
+      document.body.style.top = `-${scrollY}px`;
+      document.body.style.width = '100%';
+      document.body.style.overflowY = 'hidden';
+      
+      // Stelle den ursprünglichen Zustand wieder her, wenn das Modal geschlossen wird
+      return () => {
+        document.body.style.position = '';
+        document.body.style.top = '';
+        document.body.style.width = '';
+        document.body.style.overflowY = '';
+        // Scrolle zurück zur ursprünglichen Position
+        window.scrollTo(0, scrollY);
+      };
+    }
+  }, [isOpen]);
+  
   // Konfetti-Effekt bei Gewinn
   useEffect(() => {
     if (isOpen && isWon) {
@@ -133,14 +157,14 @@ const GameOverModal: React.FC<GameOverModalProps> = ({
     <AnimatePresence>
       {isOpen && (
         <motion.div
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 backdrop-blur-sm"
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 backdrop-blur-sm overflow-hidden touch-none"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           onClick={isWon ? undefined : onClose}
         >
           <motion.div
-            className="relative w-full max-w-md mx-auto overflow-hidden"
+            className="relative w-full max-w-md mx-auto overflow-hidden max-h-[90vh]"
             variants={cardVariants}
             initial="hidden"
             animate="visible"
@@ -155,7 +179,7 @@ const GameOverModal: React.FC<GameOverModalProps> = ({
             <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-md border border-slate-700/50 shadow-2xl" />
             
             {/* Inhalt */}
-            <div className="relative p-6 flex flex-col items-center">
+            <div className="relative p-4 md:p-6 flex flex-col items-center overflow-y-auto max-h-[90vh] scrollbar-hide">
               {/* Titel */}
               <motion.h2
                 className={cn(
