@@ -83,14 +83,14 @@ const Keyboard: React.FC<KeyboardProps> = ({
   };
 
   return (
-    <div className="relative w-full py-6 px-2 md:px-4">
+    <div className="relative w-full py-6 px-2 md:px-4 overflow-hidden">
       <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-slate-800/30 to-slate-900/30 backdrop-blur-md border border-slate-700/50 shadow-xl" />
       
-      <div className="relative flex flex-col items-center gap-2">
+      <div className="relative flex flex-col items-center gap-2 max-w-full overflow-hidden">
         {keyboardRows.map((row, rowIndex) => (
           <motion.div 
             key={`row-${rowIndex}`}
-            className="flex justify-center gap-1 md:gap-2"
+            className="flex justify-center gap-1 md:gap-2 max-w-full flex-wrap"
             variants={containerVariants}
             initial="hidden"
             animate="visible"
@@ -107,9 +107,9 @@ const Keyboard: React.FC<KeyboardProps> = ({
                   disabled={isDisabled}
                   onClick={() => handleKeyClick(letter)}
                   className={cn(
-                    "relative w-7 h-10 md:w-10 md:h-12 flex items-center justify-center rounded-md",
+                    "relative w-6 h-9 md:w-10 md:h-12 flex items-center justify-center rounded-md",
                     "transition-all duration-200 ease-out",
-                    "font-medium text-sm md:text-base",
+                    "font-medium text-xs md:text-base",
                     "focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-400",
                     status === 'unused' && !isDisabled && "hover:bg-slate-700/60 active:bg-slate-600/60",
                     status === 'correct' && "bg-emerald-500/20 border-emerald-500/40",

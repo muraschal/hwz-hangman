@@ -56,8 +56,9 @@ export const viewport: Viewport = {
   themeColor: "#0F172A",
   width: "device-width",
   initialScale: 1,
-  maximumScale: 1,
-  userScalable: false
+  maximumScale: 5,
+  userScalable: true,
+  viewportFit: "cover"
 };
 
 export default function RootLayout({
@@ -66,9 +67,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="de">
+    <html lang="de" className="scrollbar-hide">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased scrollbar-hide overflow-x-hidden`}
       >
         {children}
       </body>

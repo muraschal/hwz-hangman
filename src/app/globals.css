@@ -225,3 +225,20 @@
 .scrollbar-hide::-webkit-scrollbar {
   display: none;  /* Chrome, Safari and Opera */
 }
+
+/* Verhindere horizontales Scrollen auf mobilen Geräten */
+html, body {
+  overflow-x: hidden;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overscroll-behavior: none;
+}
+
+/* Stelle sicher, dass alle Elemente innerhalb der Viewport-Grenzen bleiben */
+* {
+  max-width: 100%;
+  box-sizing: border-box;
+}

@@ -57,12 +57,12 @@ const HangmanGame: React.FC = () => {
   };
 
   return (
-    <div className="w-full max-w-3xl mx-auto p-4">
+    <div className="w-full max-w-3xl mx-auto p-4 overflow-hidden">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="flex flex-col gap-6"
+        className="flex flex-col gap-6 overflow-hidden"
       >
         {/* Header */}
         <div className="text-center">
