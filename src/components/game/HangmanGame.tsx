@@ -19,10 +19,13 @@ const HangmanGame: React.FC = () => {
     maxWrongGuesses,
     gameStatus,
     isHintVisible,
+    currentHintIndex,
     startGame,
     guessLetter,
     resetGame,
-    toggleHint
+    toggleHint,
+    nextHint,
+    previousHint
   } = useGameStore();
 
   // Tastatur-Event-Listener
@@ -111,9 +114,12 @@ const HangmanGame: React.FC = () => {
             {/* Hinweis */}
             {currentWord && (
               <HintDisplay 
-                hint={currentWord.hint}
+                hints={currentWord.hints}
+                currentHintIndex={currentHintIndex}
                 isVisible={isHintVisible}
                 onToggle={toggleHint}
+                onNextHint={nextHint}
+                onPreviousHint={previousHint}
               />
             )}
             

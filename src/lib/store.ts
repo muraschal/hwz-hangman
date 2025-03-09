@@ -5,7 +5,7 @@ export type GameStatus = 'idle' | 'playing' | 'won' | 'lost';
 
 interface BuzzWord {
   word: string;
-  hint: string;
+  hints: string[];
 }
 
 interface GameState {
@@ -15,12 +15,15 @@ interface GameState {
   maxWrongGuesses: number;
   gameStatus: GameStatus;
   isHintVisible: boolean;
+  currentHintIndex: number;
   
   // Aktionen
   startGame: () => void;
   guessLetter: (letter: string) => void;
   resetGame: () => void;
   toggleHint: () => void;
+  nextHint: () => void;
+  previousHint: () => void;
 }
 
 export const useGameStore = create<GameState>((set, get) => ({
@@ -30,6 +33,7 @@ export const useGameStore = create<GameState>((set, get) => ({
   maxWrongGuesses: 6,
   gameStatus: 'idle',
   isHintVisible: false,
+  currentHintIndex: 0,
 
   startGame: () => {
     const buzzwords = buzzwordsData.buzzwords;
@@ -42,6 +46,7 @@ export const useGameStore = create<GameState>((set, get) => ({
       wrongGuesses: 0,
       gameStatus: 'playing',
       isHintVisible: false,
+      currentHintIndex: 0,
     });
   },
 
@@ -87,10 +92,28 @@ export const useGameStore = create<GameState>((set, get) => ({
       wrongGuesses: 0,
       gameStatus: 'idle',
       isHintVisible: false,
+      currentHintIndex: 0,
     });
   },
 
   toggleHint: () => {
     set(state => ({ isHintVisible: !state.isHintVisible }));
+  },
+
+  nextHint: () => {
+    const { currentWord, currentHintIndex } = get();
+    if (!currentWord) return;
+    
+    const maxIndex = currentWord.hints.length - 1;
+    const newIndex = Math.min(currentHintIndex + 1, maxIndex);
+    
+    set({ currentHintIndex: newIndex });
+  },
+
+  previousHint: () => {
+    const { currentHintIndex } = get();
+    const newIndex = Math.max(currentHintIndex - 1, 0);
+    
+    set({ currentHintIndex: newIndex });
   },
 })); 

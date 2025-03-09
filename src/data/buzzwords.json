@@ -2,83 +2,163 @@
   "buzzwords": [
     {
       "word": "VUCA",
-      "hint": "Beschreibt eine Welt voller Volatilität, Unsicherheit, Komplexität und Ambiguität"
+      "hints": [
+        "Ein Akronym aus der Managementtheorie für eine komplexe Geschäftswelt",
+        "Beschreibt vier Herausforderungen, mit denen Führungskräfte konfrontiert sind",
+        "Steht für Volatilität, Unsicherheit, Komplexität und Ambiguität"
+      ]
     },
     {
       "word": "DISRUPTION",
-      "hint": "Grundlegende Veränderung bestehender Geschäftsmodelle durch neue Technologien"
+      "hints": [
+        "Ein Prozess, der bestehende Strukturen aufbricht",
+        "Oft durch technologische Innovation ausgelöst",
+        "Grundlegende Veränderung bestehender Geschäftsmodelle durch neue Technologien"
+      ]
     },
     {
       "word": "LEADERSHIP",
-      "hint": "Die Kunst, Menschen zu inspirieren und zu führen"
+      "hints": [
+        "Eine Schlüsselkompetenz für Führungskräfte",
+        "Beinhaltet Inspiration, Motivation und Richtungsweisung",
+        "Die Kunst, Menschen zu inspirieren und zu einem gemeinsamen Ziel zu führen"
+      ]
     },
     {
       "word": "PURPOSE",
-      "hint": "Der tiefere Sinn und Zweck eines Unternehmens jenseits des Profits"
+      "hints": [
+        "Geht über reine Gewinnmaximierung hinaus",
+        "Gibt Unternehmen eine Existenzberechtigung und Richtung",
+        "Der tiefere Sinn und Zweck eines Unternehmens jenseits des Profits"
+      ]
     },
     {
       "word": "AGILITÄT",
-      "hint": "Fähigkeit, schnell und flexibel auf Veränderungen zu reagieren"
+      "hints": [
+        "Ein Konzept aus der modernen Organisationsentwicklung",
+        "Ermöglicht schnelle Anpassung an veränderte Bedingungen",
+        "Fähigkeit, schnell und flexibel auf Veränderungen zu reagieren"
+      ]
     },
     {
       "word": "INNOVATION",
-      "hint": "Entwicklung und Umsetzung neuer Ideen und Konzepte"
+      "hints": [
+        "Treiber für Wachstum und Wettbewerbsfähigkeit",
+        "Schafft Neues und verbessert Bestehendes",
+        "Entwicklung und Umsetzung neuer Ideen, Produkte und Konzepte"
+      ]
     },
     {
       "word": "DIGITALISIERUNG",
-      "hint": "Transformation analoger Prozesse in digitale Formate"
+      "hints": [
+        "Ein fundamentaler Wandel in Wirtschaft und Gesellschaft",
+        "Umwandlung von analogen in digitale Prozesse",
+        "Transformation analoger Prozesse, Produkte und Geschäftsmodelle in digitale Formate"
+      ]
     },
     {
       "word": "NACHHALTIGKEIT",
-      "hint": "Wirtschaftliches Handeln im Einklang mit ökologischen und sozialen Zielen"
+      "hints": [
+        "Ein Prinzip für langfristigen Erfolg",
+        "Berücksichtigt ökologische, soziale und ökonomische Aspekte",
+        "Wirtschaftliches Handeln im Einklang mit ökologischen und sozialen Zielen"
+      ]
     },
     {
       "word": "RESILIENZ",
-      "hint": "Widerstandsfähigkeit gegenüber Krisen und Veränderungen"
+      "hints": [
+        "Eine wichtige Eigenschaft in turbulenten Zeiten",
+        "Die Fähigkeit, Rückschläge zu überwinden",
+        "Widerstandsfähigkeit gegenüber Krisen und Veränderungen"
+      ]
     },
     {
       "word": "TRANSFORMATION",
-      "hint": "Grundlegender Wandel von Organisationen und Geschäftsmodellen"
+      "hints": [
+        "Ein tiefgreifender Veränderungsprozess",
+        "Betrifft Strukturen, Prozesse und Kultur",
+        "Grundlegender Wandel von Organisationen und Geschäftsmodellen"
+      ]
     },
     {
       "word": "STAKEHOLDER",
-      "hint": "Alle von Unternehmensentscheidungen betroffenen Interessengruppen"
+      "hints": [
+        "Personen oder Gruppen mit Interesse am Unternehmen",
+        "Umfasst mehr als nur Aktionäre",
+        "Alle von Unternehmensentscheidungen betroffenen Interessengruppen"
+      ]
     },
     {
       "word": "CORPORATE GOVERNANCE",
-      "hint": "Regeln und Praktiken für die verantwortungsvolle Unternehmensführung"
+      "hints": [
+        "Regelt die Führung und Kontrolle von Unternehmen",
+        "Schafft Transparenz und Verantwortlichkeit",
+        "Regeln und Praktiken für die verantwortungsvolle Unternehmensführung"
+      ]
     },
     {
       "word": "DIVERSITY",
-      "hint": "Vielfalt in Teams und Organisationen"
+      "hints": [
+        "Ein Erfolgsfaktor für moderne Unternehmen",
+        "Fördert unterschiedliche Perspektiven und Ideen",
+        "Vielfalt in Teams und Organisationen hinsichtlich Geschlecht, Alter, Herkunft und Denkweisen"
+      ]
     },
     {
       "word": "ENTREPRENEURSHIP",
-      "hint": "Unternehmerisches Denken und Handeln"
+      "hints": [
+        "Eine Haltung, die über Unternehmensgründung hinausgeht",
+        "Verbindet Innovation mit Risikobereitschaft",
+        "Unternehmerisches Denken und Handeln mit Fokus auf Chancenerkennung"
+      ]
     },
     {
       "word": "STRATEGIE",
-      "hint": "Langfristige Planung zur Erreichung von Unternehmenszielen"
+      "hints": [
+        "Gibt die Richtung für Unternehmensentscheidungen vor",
+        "Definiert den Weg zum Unternehmenserfolg",
+        "Langfristige Planung zur Erreichung von Unternehmenszielen"
+      ]
     },
     {
       "word": "BLOCKCHAIN",
-      "hint": "Dezentrale Datenbanktechnologie für sichere Transaktionen"
+      "hints": [
+        "Eine innovative Technologie für sichere Transaktionen",
+        "Basiert auf verteilten Datenbanken ohne zentrale Instanz",
+        "Dezentrale Datenbanktechnologie für sichere und transparente Transaktionen"
+      ]
     },
     {
       "word": "KÜNSTLICHE INTELLIGENZ",
-      "hint": "Technologie, die menschenähnliche Intelligenz simuliert"
+      "hints": [
+        "Eine Schlüsseltechnologie der digitalen Transformation",
+        "Ermöglicht Maschinen, menschenähnliche Entscheidungen zu treffen",
+        "Technologie, die menschenähnliche Intelligenz und Lernfähigkeit simuliert"
+      ]
     },
     {
       "word": "CHANGE MANAGEMENT",
-      "hint": "Systematische Steuerung von Veränderungsprozessen"
+      "hints": [
+        "Begleitet Unternehmen durch Veränderungsprozesse",
+        "Hilft, Widerstände zu überwinden und Akzeptanz zu schaffen",
+        "Systematische Steuerung von Veränderungsprozessen in Organisationen"
+      ]
     },
     {
       "word": "DESIGN THINKING",
-      "hint": "Nutzerzentrierter Ansatz zur Lösung komplexer Probleme"
+      "hints": [
+        "Eine Methode zur kreativen Problemlösung",
+        "Stellt den Menschen in den Mittelpunkt der Entwicklung",
+        "Nutzerzentrierter Ansatz zur Lösung komplexer Probleme durch Empathie und Iteration"
+      ]
     },
     {
       "word": "CORPORATE SOCIAL RESPONSIBILITY",
-      "hint": "Unternehmerische Gesellschaftsverantwortung"
+      "hints": [
+        "Ein Konzept für verantwortungsvolles Unternehmenshandeln",
+        "Verbindet wirtschaftlichen Erfolg mit gesellschaftlichem Engagement",
+        "Unternehmerische Gesellschaftsverantwortung über gesetzliche Anforderungen hinaus"
+      ]
     }
   ]
-} 
+}
