@@ -32,7 +32,7 @@ export const useGameStore = create<GameState>((set, get) => ({
   wrongGuesses: 0,
   maxWrongGuesses: 6,
   gameStatus: 'idle',
-  isHintVisible: false,
+  isHintVisible: true,
   currentHintIndex: 0,
 
   startGame: () => {
@@ -45,7 +45,7 @@ export const useGameStore = create<GameState>((set, get) => ({
       guessedLetters: [],
       wrongGuesses: 0,
       gameStatus: 'playing',
-      isHintVisible: false,
+      isHintVisible: true,
       currentHintIndex: 0,
     });
   },
