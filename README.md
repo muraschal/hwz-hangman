@@ -5,13 +5,13 @@
 ![HWZ Hangman Game](./public/images/preview.svg)
 
 ```
-  +---+
-  |   |
-  O   |    H W Z - H A N G M A N
- /|\  |    
- / \  |    Executive MBA Edition
-      |
-=========
+  +--------+
+  |/       |
+  |        O       H W Z - H A N G M A N
+  |       /|\      =====================
+  |       / \      Executive MBA Edition
+  |               
+  +==============+
 ```
 
 Ein modernes, interaktives Hangman-Spiel mit einer hochwertigen Glassmorphism-Benutzeroberfläche, speziell entwickelt für den Executive MBA (EMBA) der HWZ.
@@ -67,11 +67,17 @@ Ein modernes, interaktives Hangman-Spiel mit einer hochwertigen Glassmorphism-Be
 ## 🎯 Spielregeln
 
 ```
-1️⃣ Ein zufälliges Buzzword aus dem EMBA-Kontext wird ausgewählt
-2️⃣ Rate Buchstaben, um das Wort zu entschlüsseln
-3️⃣ Nutze die Hinweise, wenn du Hilfe benötigst (3 Stufen verfügbar)
-4️⃣ Jeder falsche Buchstabe bringt dich näher an die Niederlage
-5️⃣ Gewinne, indem du alle Buchstaben errätst, bevor der Hangman fertig ist
++---------------------------------------------------+
+| 1️⃣ Ein zufälliges Buzzword aus dem EMBA-Kontext  |
+|    wird ausgewählt                                |
+| 2️⃣ Rate Buchstaben, um das Wort zu entschlüsseln |
+| 3️⃣ Nutze die Hinweise, wenn du Hilfe benötigst   |
+|    (3 Stufen verfügbar)                           |
+| 4️⃣ Jeder falsche Buchstabe bringt dich näher     |
+|    an die Niederlage                              |
+| 5️⃣ Gewinne, indem du alle Buchstaben errätst,    |
+|    bevor der Hangman fertig ist                   |
++---------------------------------------------------+
 ```
 
 ## 📚 Buzzword-Beispiele
@@ -139,9 +145,12 @@ Dieses Projekt ist unter der [MIT-Lizenz](LICENSE) lizenziert.
 Entwickelt für die HWZ - Hochschule für Wirtschaft Zürich | Executive MBA Programm
 
 ```
-  O   
- /|\  Viel Spaß beim Spielen!
- / \  
+     _____
+    |     |
+    |     O
+   \|/   /|\    Viel Spaß beim Spielen!
+    |    / \    Drücke 5x Leertaste für eine Überraschung...
+   / \
 ```
 
 </div> 
