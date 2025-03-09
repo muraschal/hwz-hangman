@@ -5,8 +5,8 @@ import HangmanGame from '@/components/game/HangmanGame';
 import DancingStickman from '@/components/easter-egg/DancingStickman';
 
 export default function Home() {
-  const [spaceKeyCount, setSpaceKeyCount] = useState(0);
   const [showEasterEgg, setShowEasterEgg] = useState(false);
+  const [spaceCounter, setSpaceCounter] = useState(0);
   
   // Effekt für das Zählen der Leertasten-Drücke
   useEffect(() => {
@@ -15,21 +15,21 @@ export default function Home() {
     
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.code === 'Space') {
-        setSpaceKeyCount(prev => {
-          const newCount = prev + 1;
-          // Aktiviere das Easter Egg nach 5 Leertasten-Drücken
-          if (newCount >= 5) {
-            setShowEasterEgg(true);
-            return 0; // Setze den Zähler zurück
-          }
-          return newCount;
-        });
+        // Zähle die Leertasten-Drücke und aktiviere das Easter Egg nach 5 Drücken
+        const newCount = spaceCounter + 1;
+        setSpaceCounter(newCount);
+        
+        // Aktiviere das Easter Egg nach 5 Leertasten-Drücken
+        if (newCount >= 5) {
+          setShowEasterEgg(true);
+          setSpaceCounter(0); // Setze den Zähler zurück
+        }
       }
     };
     
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [showEasterEgg]);
+  }, [showEasterEgg, spaceCounter]);
   
   // Funktion zum Schließen des Easter Eggs
   const handleCloseEasterEgg = () => {
