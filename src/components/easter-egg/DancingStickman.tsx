@@ -133,36 +133,52 @@ const DancingStickman: React.FC<DancingStickmanProps> = ({ isVisible, onClose })
     scale?: number;
     delay?: number;
   }) => {
-    // Bewegungspfad für die Strichmännchen
+    // Bewegungspfad für die Strichmännchen - deutlich erweitert für mehr Dynamik
     const movementPath = {
       dance: [
         { x: 0, y: 0 },
-        { x: 50, y: 20 },
-        { x: 100, y: -20 },
-        { x: 150, y: 0 },
-        { x: 100, y: 20 },
-        { x: 50, y: -20 },
+        { x: 80, y: -40 },
+        { x: 160, y: 0 },
+        { x: 200, y: 60 },
+        { x: 160, y: 120 },
+        { x: 80, y: 160 },
+        { x: 0, y: 120 },
+        { x: -80, y: 60 },
+        { x: -160, y: 0 },
+        { x: -80, y: -40 },
         { x: 0, y: 0 }
       ],
       fight: [
         { x: 0, y: 0 },
-        { x: -50, y: 30 },
-        { x: -100, y: 0 },
-        { x: -50, y: -30 },
+        { x: -100, y: 50 },
+        { x: -180, y: 0 },
+        { x: -220, y: -50 },
+        { x: -180, y: -100 },
+        { x: -100, y: -50 },
         { x: 0, y: 0 }
       ],
       breakdance: [
         { x: 0, y: 0 },
-        { x: -30, y: -30 },
-        { x: 0, y: -60 },
-        { x: 30, y: -30 },
+        { x: -60, y: -60 },
+        { x: -120, y: -30 },
+        { x: -60, y: 30 },
+        { x: 0, y: 60 },
+        { x: 60, y: 30 },
+        { x: 120, y: -30 },
+        { x: 60, y: -60 },
         { x: 0, y: 0 }
       ],
       robot: [
         { x: 0, y: 0 },
-        { x: 30, y: 0 },
-        { x: 30, y: 30 },
-        { x: 0, y: 30 },
+        { x: 80, y: 0 },
+        { x: 80, y: 80 },
+        { x: 0, y: 80 },
+        { x: -80, y: 80 },
+        { x: -80, y: 0 },
+        { x: -80, y: -80 },
+        { x: 0, y: -80 },
+        { x: 80, y: -80 },
+        { x: 80, y: 0 },
         { x: 0, y: 0 }
       ]
     };
@@ -174,15 +190,15 @@ const DancingStickman: React.FC<DancingStickmanProps> = ({ isVisible, onClose })
           x: movementPath.dance.map(p => p.x),
           y: movementPath.dance.map(p => p.y),
           transition: {
-            duration: 8,
+            duration: 12,
             repeat: Infinity,
             ease: "easeInOut",
             delay
           }
         },
         body: {
-          rotate: [0, -5, 0, 5, 0],
-          y: [0, -5, 0, -5, 0],
+          rotate: [-5, 5, -5, 5, -5],
+          y: [-5, 0, 5, 0, -5],
           transition: {
             duration: 2,
             repeat: Infinity,
@@ -191,72 +207,72 @@ const DancingStickman: React.FC<DancingStickmanProps> = ({ isVisible, onClose })
           }
         },
         leftArm: {
-          rotate: [0, 30, 0, -30, 0],
+          rotate: [0, 30, 60, 30, 0, -30, 0],
           transition: {
-            duration: 1.5,
+            duration: 3,
             repeat: Infinity,
             ease: "easeInOut",
             delay: delay + 0.2
           }
         },
         rightArm: {
-          rotate: [0, -30, 0, 30, 0],
+          rotate: [0, -30, 0, 30, 60, 30, 0],
           transition: {
-            duration: 1.5,
+            duration: 3,
             repeat: Infinity,
             ease: "easeInOut",
             delay: delay + 0.2
           }
         },
         leftElbow: {
-          rotate: [0, 20, 40, 20, 0],
+          rotate: [0, 30, 60, 30, 0, -15, 0],
           transition: {
-            duration: 1.5,
+            duration: 3,
             repeat: Infinity,
             ease: "easeInOut",
             delay: delay + 0.3
           }
         },
         rightElbow: {
-          rotate: [0, -20, -40, -20, 0],
+          rotate: [0, -15, 0, 30, 60, 30, 0],
           transition: {
-            duration: 1.5,
+            duration: 3,
             repeat: Infinity,
             ease: "easeInOut",
             delay: delay + 0.3
           }
         },
         leftLeg: {
-          rotate: [0, 20, 0, -10, 0],
+          rotate: [0, 20, 40, 20, 0, -20, 0],
           transition: {
-            duration: 1.5,
+            duration: 3,
             repeat: Infinity,
             ease: "easeInOut",
             delay: delay + 0.1
           }
         },
         rightLeg: {
-          rotate: [0, -10, 0, 20, 0],
+          rotate: [0, -20, 0, 20, 40, 20, 0],
           transition: {
-            duration: 1.5,
+            duration: 3,
             repeat: Infinity,
             ease: "easeInOut",
             delay: delay + 0.1
           }
         },
         leftKnee: {
-          rotate: [0, 15, 30, 15, 0],
+          rotate: [0, 15, 30, 45, 30, 15, 0],
           transition: {
-            duration: 1.5,
+            duration: 3,
             repeat: Infinity,
             ease: "easeInOut",
             delay: delay + 0.2
           }
         },
         rightKnee: {
-          rotate: [0, -15, -30, -15, 0],
+          rotate: [0, 15, 0, 15, 30, 45, 30],
           transition: {
-            duration: 1.5,
+            duration: 3,
             repeat: Infinity,
             ease: "easeInOut",
             delay: delay + 0.2
@@ -268,89 +284,89 @@ const DancingStickman: React.FC<DancingStickmanProps> = ({ isVisible, onClose })
           x: movementPath.fight.map(p => p.x),
           y: movementPath.fight.map(p => p.y),
           transition: {
-            duration: 6,
+            duration: 10,
             repeat: Infinity,
             ease: "easeInOut",
             delay
           }
         },
         body: {
-          rotate: [0, 5, -5, 5, 0],
-          x: [0, 10, -10, 5, 0],
+          rotate: [-10, 0, 10, 0, -10],
+          x: [-10, 10, -10, 10, -10],
           transition: {
-            duration: 1.2,
+            duration: 1.5,
             repeat: Infinity,
             ease: "easeInOut",
             delay
           }
         },
         leftArm: {
-          rotate: [0, 60, 90, 60, 0],
+          rotate: [0, 60, 90, 120, 90, 60, 0],
           transition: {
-            duration: 0.8,
+            duration: 1.2,
             repeat: Infinity,
             ease: "easeInOut",
             delay: delay + 0.1
           }
         },
         rightArm: {
-          rotate: [0, -90, -60, -90, 0],
+          rotate: [0, -60, -90, -120, -90, -60, 0],
           transition: {
-            duration: 0.8,
+            duration: 1.2,
             repeat: Infinity,
             ease: "easeInOut",
             delay: delay + 0.2
           }
         },
         leftElbow: {
-          rotate: [0, 30, 60, 30, 0],
+          rotate: [0, 30, 60, 90, 60, 30, 0],
           transition: {
-            duration: 0.8,
+            duration: 1.2,
             repeat: Infinity,
             ease: "easeInOut",
             delay: delay + 0.15
           }
         },
         rightElbow: {
-          rotate: [0, -30, -60, -30, 0],
+          rotate: [0, -30, -60, -90, -60, -30, 0],
           transition: {
-            duration: 0.8,
+            duration: 1.2,
             repeat: Infinity,
             ease: "easeInOut",
             delay: delay + 0.25
           }
         },
         leftLeg: {
-          rotate: [0, 30, 0, 10, 0],
+          rotate: [0, 30, 45, 30, 0, -15, 0],
           transition: {
-            duration: 1.2,
+            duration: 1.5,
             repeat: Infinity,
             ease: "easeInOut",
             delay: delay + 0.1
           }
         },
         rightLeg: {
-          rotate: [0, -10, 0, -30, 0],
+          rotate: [0, -15, 0, 30, 45, 30, 0],
           transition: {
-            duration: 1.2,
+            duration: 1.5,
             repeat: Infinity,
             ease: "easeInOut",
             delay: delay + 0.2
           }
         },
         leftKnee: {
-          rotate: [0, 20, 40, 20, 0],
+          rotate: [0, 20, 40, 60, 40, 20, 0],
           transition: {
-            duration: 1.2,
+            duration: 1.5,
             repeat: Infinity,
             ease: "easeInOut",
             delay: delay + 0.15
           }
         },
         rightKnee: {
-          rotate: [0, -20, -40, -20, 0],
+          rotate: [0, -20, 0, 20, 40, 60, 40],
           transition: {
-            duration: 1.2,
+            duration: 1.5,
             repeat: Infinity,
             ease: "easeInOut",
             delay: delay + 0.25
@@ -362,89 +378,89 @@ const DancingStickman: React.FC<DancingStickmanProps> = ({ isVisible, onClose })
           x: movementPath.breakdance.map(p => p.x),
           y: movementPath.breakdance.map(p => p.y),
           transition: {
-            duration: 5,
+            duration: 8,
             repeat: Infinity,
             ease: "easeInOut",
             delay
           }
         },
         body: {
-          rotate: [0, 180, 360],
-          y: [0, -10, 0],
+          rotate: [0, 90, 180, 270, 360],
+          y: [0, -10, -5, -10, 0],
           transition: {
-            duration: 2,
+            duration: 3,
             repeat: Infinity,
             ease: "easeInOut",
             delay
           }
         },
         leftArm: {
-          rotate: [0, 90, 180, 90, 0],
+          rotate: [0, 90, 180, 270, 180, 90, 0],
           transition: {
-            duration: 2,
+            duration: 3,
             repeat: Infinity,
             ease: "easeInOut",
             delay: delay + 0.2
           }
         },
         rightArm: {
-          rotate: [0, -90, -180, -90, 0],
+          rotate: [0, -90, -180, -270, -180, -90, 0],
           transition: {
-            duration: 2,
+            duration: 3,
             repeat: Infinity,
             ease: "easeInOut",
             delay: delay + 0.2
           }
         },
         leftElbow: {
-          rotate: [0, 45, 90, 45, 0],
+          rotate: [0, 45, 90, 135, 90, 45, 0],
           transition: {
-            duration: 2,
+            duration: 3,
             repeat: Infinity,
             ease: "easeInOut",
             delay: delay + 0.3
           }
         },
         rightElbow: {
-          rotate: [0, -45, -90, -45, 0],
+          rotate: [0, -45, -90, -135, -90, -45, 0],
           transition: {
-            duration: 2,
+            duration: 3,
             repeat: Infinity,
             ease: "easeInOut",
             delay: delay + 0.3
           }
         },
         leftLeg: {
-          rotate: [0, 90, 0, 45, 0],
+          rotate: [0, 90, 135, 90, 45, 0, 45],
           transition: {
-            duration: 2,
+            duration: 3,
             repeat: Infinity,
             ease: "easeInOut",
             delay: delay + 0.1
           }
         },
         rightLeg: {
-          rotate: [0, -45, 0, -90, 0],
+          rotate: [0, -45, 0, 45, 90, 135, 90],
           transition: {
-            duration: 2,
+            duration: 3,
             repeat: Infinity,
             ease: "easeInOut",
             delay: delay + 0.1
           }
         },
         leftKnee: {
-          rotate: [0, 45, 90, 45, 0],
+          rotate: [0, 45, 90, 135, 90, 45, 0],
           transition: {
-            duration: 2,
+            duration: 3,
             repeat: Infinity,
             ease: "easeInOut",
             delay: delay + 0.15
           }
         },
         rightKnee: {
-          rotate: [0, -45, -90, -45, 0],
+          rotate: [0, -45, -90, -135, -90, -45, 0],
           transition: {
-            duration: 2,
+            duration: 3,
             repeat: Infinity,
             ease: "easeInOut",
             delay: delay + 0.15
@@ -456,90 +472,91 @@ const DancingStickman: React.FC<DancingStickmanProps> = ({ isVisible, onClose })
           x: movementPath.robot.map(p => p.x),
           y: movementPath.robot.map(p => p.y),
           transition: {
-            duration: 4,
+            duration: 8,
+            repeat: Infinity,
+            ease: "steps(10)",
+            delay
+          }
+        },
+        body: {
+          y: [0, -5, -10, -5, 0],
+          rotate: [-5, 0, 5, 0, -5],
+          transition: {
+            duration: 1.5,
             repeat: Infinity,
             ease: "steps(5)",
             delay
           }
         },
-        body: {
-          y: [0, -5, 0, -5, 0],
-          transition: {
-            duration: 1,
-            repeat: Infinity,
-            ease: "steps(3)",
-            delay
-          }
-        },
         leftArm: {
-          rotate: [0, 90, 0, 90, 0],
+          rotate: [0, 45, 90, 45, 0],
           transition: {
-            duration: 1,
+            duration: 1.5,
             repeat: Infinity,
-            ease: "steps(3)",
+            ease: "steps(5)",
             delay: delay + 0.2
           }
         },
         rightArm: {
-          rotate: [0, -90, 0, -90, 0],
+          rotate: [0, -45, -90, -45, 0],
           transition: {
-            duration: 1,
+            duration: 1.5,
             repeat: Infinity,
-            ease: "steps(3)",
+            ease: "steps(5)",
             delay: delay + 0.4
           }
         },
         leftElbow: {
-          rotate: [0, 45, 0, 45, 0],
+          rotate: [0, 22.5, 45, 67.5, 90],
           transition: {
-            duration: 1,
+            duration: 1.5,
             repeat: Infinity,
-            ease: "steps(3)",
+            ease: "steps(5)",
             delay: delay + 0.3
           }
         },
         rightElbow: {
-          rotate: [0, -45, 0, -45, 0],
+          rotate: [0, -22.5, -45, -67.5, -90],
           transition: {
-            duration: 1,
+            duration: 1.5,
             repeat: Infinity,
-            ease: "steps(3)",
+            ease: "steps(5)",
             delay: delay + 0.5
           }
         },
         leftLeg: {
-          rotate: [0, 30, 0, 30, 0],
+          rotate: [0, 15, 30, 45, 30],
           transition: {
-            duration: 1,
+            duration: 1.5,
             repeat: Infinity,
-            ease: "steps(3)",
+            ease: "steps(5)",
             delay: delay + 0.1
           }
         },
         rightLeg: {
-          rotate: [0, -30, 0, -30, 0],
+          rotate: [0, -15, -30, -45, -30],
           transition: {
-            duration: 1,
+            duration: 1.5,
             repeat: Infinity,
-            ease: "steps(3)",
+            ease: "steps(5)",
             delay: delay + 0.3
           }
         },
         leftKnee: {
-          rotate: [0, 20, 0, 20, 0],
+          rotate: [0, 10, 20, 30, 20],
           transition: {
-            duration: 1,
+            duration: 1.5,
             repeat: Infinity,
-            ease: "steps(3)",
+            ease: "steps(5)",
             delay: delay + 0.15
           }
         },
         rightKnee: {
-          rotate: [0, -20, 0, -20, 0],
+          rotate: [0, -10, -20, -30, -20],
           transition: {
-            duration: 1,
+            duration: 1.5,
             repeat: Infinity,
-            ease: "steps(3)",
+            ease: "steps(5)",
             delay: delay + 0.35
           }
         }
@@ -616,77 +633,113 @@ const DancingStickman: React.FC<DancingStickmanProps> = ({ isVisible, onClose })
             {/* Körper */}
             <line x1="60" y1="60" x2="60" y2="120" stroke={color} strokeWidth="4" />
             
+            {/* Verbindungskreise für die Gelenke */}
+            <circle cx="60" cy="80" r="4" fill={color} /> {/* Schultergelenk */}
+            <circle cx="60" cy="120" r="4" fill={color} /> {/* Hüftgelenk */}
+            
             {/* Linker Arm - Oberarm */}
-            <motion.line 
-              x1="60" y1="80" x2="30" y2="90" 
-              stroke={color} 
-              strokeWidth="4"
+            <motion.g
               animate={currentAnimation.leftArm}
               style={{ originX: "60px", originY: "80px" }}
-            />
-            
-            {/* Linker Arm - Unterarm mit Ellbogen */}
-            <motion.line 
-              x1="30" y1="90" x2="15" y2="100" 
-              stroke={color} 
-              strokeWidth="4"
-              animate={currentAnimation.leftElbow}
-              style={{ originX: "30px", originY: "90px" }}
-            />
+            >
+              <line 
+                x1="60" y1="80" x2="30" y2="90" 
+                stroke={color} 
+                strokeWidth="4"
+              />
+              <circle cx="30" cy="90" r="3" fill={color} /> {/* Ellbogengelenk */}
+              
+              {/* Linker Arm - Unterarm mit Ellbogen */}
+              <motion.g
+                animate={currentAnimation.leftElbow}
+                style={{ originX: "30px", originY: "90px" }}
+              >
+                <line 
+                  x1="30" y1="90" x2="15" y2="100" 
+                  stroke={color} 
+                  strokeWidth="4"
+                />
+                <circle cx="15" cy="100" r="3" fill={color} /> {/* Handgelenk */}
+              </motion.g>
+            </motion.g>
             
             {/* Rechter Arm - Oberarm */}
-            <motion.line 
-              x1="60" y1="80" x2="90" y2="90" 
-              stroke={color} 
-              strokeWidth="4"
+            <motion.g
               animate={currentAnimation.rightArm}
               style={{ originX: "60px", originY: "80px" }}
-            />
-            
-            {/* Rechter Arm - Unterarm mit Ellbogen */}
-            <motion.line 
-              x1="90" y1="90" x2="105" y2="100" 
-              stroke={color} 
-              strokeWidth="4"
-              animate={currentAnimation.rightElbow}
-              style={{ originX: "90px", originY: "90px" }}
-            />
+            >
+              <line 
+                x1="60" y1="80" x2="90" y2="90" 
+                stroke={color} 
+                strokeWidth="4"
+              />
+              <circle cx="90" cy="90" r="3" fill={color} /> {/* Ellbogengelenk */}
+              
+              {/* Rechter Arm - Unterarm mit Ellbogen */}
+              <motion.g
+                animate={currentAnimation.rightElbow}
+                style={{ originX: "90px", originY: "90px" }}
+              >
+                <line 
+                  x1="90" y1="90" x2="105" y2="100" 
+                  stroke={color} 
+                  strokeWidth="4"
+                />
+                <circle cx="105" cy="100" r="3" fill={color} /> {/* Handgelenk */}
+              </motion.g>
+            </motion.g>
             
             {/* Linkes Bein - Oberschenkel */}
-            <motion.line 
-              x1="60" y1="120" x2="40" y2="150" 
-              stroke={color} 
-              strokeWidth="4"
+            <motion.g
               animate={currentAnimation.leftLeg}
               style={{ originX: "60px", originY: "120px" }}
-            />
-            
-            {/* Linkes Bein - Unterschenkel mit Knie */}
-            <motion.line 
-              x1="40" y1="150" x2="30" y2="180" 
-              stroke={color} 
-              strokeWidth="4"
-              animate={currentAnimation.leftKnee}
-              style={{ originX: "40px", originY: "150px" }}
-            />
+            >
+              <line 
+                x1="60" y1="120" x2="40" y2="150" 
+                stroke={color} 
+                strokeWidth="4"
+              />
+              <circle cx="40" cy="150" r="3" fill={color} /> {/* Kniegelenk */}
+              
+              {/* Linkes Bein - Unterschenkel mit Knie */}
+              <motion.g
+                animate={currentAnimation.leftKnee}
+                style={{ originX: "40px", originY: "150px" }}
+              >
+                <line 
+                  x1="40" y1="150" x2="30" y2="180" 
+                  stroke={color} 
+                  strokeWidth="4"
+                />
+                <circle cx="30" cy="180" r="3" fill={color} /> {/* Fußgelenk */}
+              </motion.g>
+            </motion.g>
             
             {/* Rechtes Bein - Oberschenkel */}
-            <motion.line 
-              x1="60" y1="120" x2="80" y2="150" 
-              stroke={color} 
-              strokeWidth="4"
+            <motion.g
               animate={currentAnimation.rightLeg}
               style={{ originX: "60px", originY: "120px" }}
-            />
-            
-            {/* Rechtes Bein - Unterschenkel mit Knie */}
-            <motion.line 
-              x1="80" y1="150" x2="90" y2="180" 
-              stroke={color} 
-              strokeWidth="4"
-              animate={currentAnimation.rightKnee}
-              style={{ originX: "80px", originY: "150px" }}
-            />
+            >
+              <line 
+                x1="60" y1="120" x2="80" y2="150" 
+                stroke={color} 
+                strokeWidth="4"
+              />
+              <circle cx="80" cy="150" r="3" fill={color} /> {/* Kniegelenk */}
+              
+              {/* Rechtes Bein - Unterschenkel mit Knie */}
+              <motion.g
+                animate={currentAnimation.rightKnee}
+                style={{ originX: "80px", originY: "150px" }}
+              >
+                <line 
+                  x1="80" y1="150" x2="90" y2="180" 
+                  stroke={color} 
+                  strokeWidth="4"
+                />
+                <circle cx="90" cy="180" r="3" fill={color} /> {/* Fußgelenk */}
+              </motion.g>
+            </motion.g>
             
             {/* Accessoires basierend auf Stil */}
             {style === "dance" && (
