@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import HangmanGame from '@/components/game/HangmanGame';
 import DancingStickman from '@/components/easter-egg/DancingStickman';
+import { Analytics } from "@vercel/analytics/react";
 
 export default function Home() {
   const [showEasterEgg, setShowEasterEgg] = useState(false);
@@ -35,6 +36,9 @@ export default function Home() {
       
       {/* Easter Egg */}
       <DancingStickman isVisible={showEasterEgg} onClose={handleCloseEasterEgg} />
+      
+      {/* Vercel Analytics */}
+      <Analytics />
     </main>
   );
 }
