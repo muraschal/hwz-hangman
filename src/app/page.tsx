@@ -4,6 +4,18 @@ import { useState, useEffect, useRef } from 'react';
 import HangmanGame from '@/components/game/HangmanGame';
 import DancingStickman from '@/components/easter-egg/DancingStickman';
 
+// Erweiterte DeviceMotionEvent-Schnittstelle für iOS
+interface DeviceMotionEventWithPermission extends DeviceMotionEvent {
+  requestPermission?: () => Promise<'granted' | 'denied' | 'default'>;
+}
+
+// Erweiterte DeviceMotionEvent-Konstruktor-Schnittstelle
+interface DeviceMotionEventConstructorWithPermission {
+  new(type: string, eventInitDict?: DeviceMotionEventInit): DeviceMotionEvent;
+  prototype: DeviceMotionEvent;
+  requestPermission?: () => Promise<'granted' | 'denied' | 'default'>;
+}
+
 export default function Home() {
   const [showEasterEgg, setShowEasterEgg] = useState(false);
   const [spaceCounter, setSpaceCounter] = useState(0);
@@ -86,9 +98,9 @@ export default function Home() {
     // Frage den Benutzer nach Erlaubnis für die Bewegungssensoren (nur auf iOS)
     const requestDeviceMotionPermission = async () => {
       if (typeof DeviceMotionEvent !== 'undefined' && 
-          typeof (DeviceMotionEvent as any).requestPermission === 'function') {
+          typeof (DeviceMotionEvent as DeviceMotionEventConstructorWithPermission).requestPermission === 'function') {
         try {
-          const permissionState = await (DeviceMotionEvent as any).requestPermission();
+          const permissionState = await (DeviceMotionEvent as DeviceMotionEventConstructorWithPermission).requestPermission?.();
           if (permissionState === 'granted') {
             window.addEventListener('devicemotion', handleDeviceMotion);
           }
