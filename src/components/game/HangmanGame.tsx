@@ -11,7 +11,11 @@ import HintDisplay from './HintDisplay';
 import GameOverModal from './GameOverModal';
 import { PlayIcon } from 'lucide-react';
 
-const HangmanGame: React.FC = () => {
+interface HangmanGameProps {
+  onTitleClick?: () => void;
+}
+
+const HangmanGame: React.FC<HangmanGameProps> = ({ onTitleClick }) => {
   const { 
     currentWord, 
     guessedLetters, 
@@ -66,7 +70,10 @@ const HangmanGame: React.FC = () => {
       >
         {/* Header */}
         <div className="text-center">
-          <h1 className="text-3xl md:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-violet-400">
+          <h1 
+            className="text-3xl md:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-violet-400 cursor-pointer hover:scale-105 transition-transform"
+            onClick={onTitleClick}
+          >
             HWZ Hangman
           </h1>
           <p className="text-slate-400 mt-2">
