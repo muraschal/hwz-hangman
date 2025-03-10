@@ -52,6 +52,7 @@ Ein modernes, interaktives Hangman-Spiel mit einer hochwertigen Glassmorphism-Be
         <li>Next.js 14 mit App Router</li>
         <li>TypeScript für Typsicherheit</li>
         <li>Framer Motion für flüssige Animationen</li>
+        <li>Vercel Analytics für Nutzungsstatistiken</li>
       </ul>
     </td>
     <td width="50%">
@@ -103,6 +104,7 @@ Ein modernes, interaktives Hangman-Spiel mit einer hochwertigen Glassmorphism-Be
 - **Framer Motion**: Für flüssige Animationen und Übergänge
 - **Zustand**: Für einfaches State Management
 - **shadcn/ui**: Für hochwertige UI-Komponenten
+- **Vercel Analytics**: Für anonymisierte Nutzungsstatistiken
 
 ## 🚀 Installation und Start
 
@@ -130,6 +132,12 @@ npm start
   - Highscore-System
   - Multiplayer-Modus
   - Kategorien für Buzzwords
+
+## 🎁 Easter Eggs
+
+Das Spiel enthält versteckte Überraschungen:
+- Klicke auf den "HWZ Hangman"-Titel, um eine besondere Animation zu entdecken
+- Tanzende Strichmännchen mit dynamischen Bewegungen und Gelenken
 
 ## 📝 Lizenz
 
