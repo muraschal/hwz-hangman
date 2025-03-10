@@ -4,11 +4,6 @@ import { useState, useEffect, useRef } from 'react';
 import HangmanGame from '@/components/game/HangmanGame';
 import DancingStickman from '@/components/easter-egg/DancingStickman';
 
-// Erweiterte DeviceMotionEvent-Schnittstelle für iOS
-interface DeviceMotionEventWithPermission extends DeviceMotionEvent {
-  requestPermission?: () => Promise<'granted' | 'denied' | 'default'>;
-}
-
 // Erweiterte DeviceMotionEvent-Konstruktor-Schnittstelle
 interface DeviceMotionEventConstructorWithPermission {
   new(type: string, eventInitDict?: DeviceMotionEventInit): DeviceMotionEvent;
