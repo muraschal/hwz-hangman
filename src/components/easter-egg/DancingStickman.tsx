@@ -133,9 +133,53 @@ const DancingStickman: React.FC<DancingStickmanProps> = ({ isVisible, onClose })
     scale?: number;
     delay?: number;
   }) => {
+    // Bewegungspfad für die Strichmännchen
+    const movementPath = {
+      dance: [
+        { x: 0, y: 0 },
+        { x: 50, y: 20 },
+        { x: 100, y: -20 },
+        { x: 150, y: 0 },
+        { x: 100, y: 20 },
+        { x: 50, y: -20 },
+        { x: 0, y: 0 }
+      ],
+      fight: [
+        { x: 0, y: 0 },
+        { x: -50, y: 30 },
+        { x: -100, y: 0 },
+        { x: -50, y: -30 },
+        { x: 0, y: 0 }
+      ],
+      breakdance: [
+        { x: 0, y: 0 },
+        { x: -30, y: -30 },
+        { x: 0, y: -60 },
+        { x: 30, y: -30 },
+        { x: 0, y: 0 }
+      ],
+      robot: [
+        { x: 0, y: 0 },
+        { x: 30, y: 0 },
+        { x: 30, y: 30 },
+        { x: 0, y: 30 },
+        { x: 0, y: 0 }
+      ]
+    };
+
     // Verschiedene Animationsstile
     const animations = {
       dance: {
+        movement: {
+          x: movementPath.dance.map(p => p.x),
+          y: movementPath.dance.map(p => p.y),
+          transition: {
+            duration: 8,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay
+          }
+        },
         body: {
           rotate: [0, -5, 0, 5, 0],
           y: [0, -5, 0, -5, 0],
@@ -164,6 +208,24 @@ const DancingStickman: React.FC<DancingStickmanProps> = ({ isVisible, onClose })
             delay: delay + 0.2
           }
         },
+        leftElbow: {
+          rotate: [0, 20, 40, 20, 0],
+          transition: {
+            duration: 1.5,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: delay + 0.3
+          }
+        },
+        rightElbow: {
+          rotate: [0, -20, -40, -20, 0],
+          transition: {
+            duration: 1.5,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: delay + 0.3
+          }
+        },
         leftLeg: {
           rotate: [0, 20, 0, -10, 0],
           transition: {
@@ -181,9 +243,37 @@ const DancingStickman: React.FC<DancingStickmanProps> = ({ isVisible, onClose })
             ease: "easeInOut",
             delay: delay + 0.1
           }
+        },
+        leftKnee: {
+          rotate: [0, 15, 30, 15, 0],
+          transition: {
+            duration: 1.5,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: delay + 0.2
+          }
+        },
+        rightKnee: {
+          rotate: [0, -15, -30, -15, 0],
+          transition: {
+            duration: 1.5,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: delay + 0.2
+          }
         }
       },
       fight: {
+        movement: {
+          x: movementPath.fight.map(p => p.x),
+          y: movementPath.fight.map(p => p.y),
+          transition: {
+            duration: 6,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay
+          }
+        },
         body: {
           rotate: [0, 5, -5, 5, 0],
           x: [0, 10, -10, 5, 0],
@@ -212,6 +302,24 @@ const DancingStickman: React.FC<DancingStickmanProps> = ({ isVisible, onClose })
             delay: delay + 0.2
           }
         },
+        leftElbow: {
+          rotate: [0, 30, 60, 30, 0],
+          transition: {
+            duration: 0.8,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: delay + 0.15
+          }
+        },
+        rightElbow: {
+          rotate: [0, -30, -60, -30, 0],
+          transition: {
+            duration: 0.8,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: delay + 0.25
+          }
+        },
         leftLeg: {
           rotate: [0, 30, 0, 10, 0],
           transition: {
@@ -229,9 +337,37 @@ const DancingStickman: React.FC<DancingStickmanProps> = ({ isVisible, onClose })
             ease: "easeInOut",
             delay: delay + 0.2
           }
+        },
+        leftKnee: {
+          rotate: [0, 20, 40, 20, 0],
+          transition: {
+            duration: 1.2,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: delay + 0.15
+          }
+        },
+        rightKnee: {
+          rotate: [0, -20, -40, -20, 0],
+          transition: {
+            duration: 1.2,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: delay + 0.25
+          }
         }
       },
       breakdance: {
+        movement: {
+          x: movementPath.breakdance.map(p => p.x),
+          y: movementPath.breakdance.map(p => p.y),
+          transition: {
+            duration: 5,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay
+          }
+        },
         body: {
           rotate: [0, 180, 360],
           y: [0, -10, 0],
@@ -260,6 +396,24 @@ const DancingStickman: React.FC<DancingStickmanProps> = ({ isVisible, onClose })
             delay: delay + 0.2
           }
         },
+        leftElbow: {
+          rotate: [0, 45, 90, 45, 0],
+          transition: {
+            duration: 2,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: delay + 0.3
+          }
+        },
+        rightElbow: {
+          rotate: [0, -45, -90, -45, 0],
+          transition: {
+            duration: 2,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: delay + 0.3
+          }
+        },
         leftLeg: {
           rotate: [0, 90, 0, 45, 0],
           transition: {
@@ -277,9 +431,37 @@ const DancingStickman: React.FC<DancingStickmanProps> = ({ isVisible, onClose })
             ease: "easeInOut",
             delay: delay + 0.1
           }
+        },
+        leftKnee: {
+          rotate: [0, 45, 90, 45, 0],
+          transition: {
+            duration: 2,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: delay + 0.15
+          }
+        },
+        rightKnee: {
+          rotate: [0, -45, -90, -45, 0],
+          transition: {
+            duration: 2,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: delay + 0.15
+          }
         }
       },
       robot: {
+        movement: {
+          x: movementPath.robot.map(p => p.x),
+          y: movementPath.robot.map(p => p.y),
+          transition: {
+            duration: 4,
+            repeat: Infinity,
+            ease: "steps(5)",
+            delay
+          }
+        },
         body: {
           y: [0, -5, 0, -5, 0],
           transition: {
@@ -307,6 +489,24 @@ const DancingStickman: React.FC<DancingStickmanProps> = ({ isVisible, onClose })
             delay: delay + 0.4
           }
         },
+        leftElbow: {
+          rotate: [0, 45, 0, 45, 0],
+          transition: {
+            duration: 1,
+            repeat: Infinity,
+            ease: "steps(3)",
+            delay: delay + 0.3
+          }
+        },
+        rightElbow: {
+          rotate: [0, -45, 0, -45, 0],
+          transition: {
+            duration: 1,
+            repeat: Infinity,
+            ease: "steps(3)",
+            delay: delay + 0.5
+          }
+        },
         leftLeg: {
           rotate: [0, 30, 0, 30, 0],
           transition: {
@@ -323,6 +523,24 @@ const DancingStickman: React.FC<DancingStickmanProps> = ({ isVisible, onClose })
             repeat: Infinity,
             ease: "steps(3)",
             delay: delay + 0.3
+          }
+        },
+        leftKnee: {
+          rotate: [0, 20, 0, 20, 0],
+          transition: {
+            duration: 1,
+            repeat: Infinity,
+            ease: "steps(3)",
+            delay: delay + 0.15
+          }
+        },
+        rightKnee: {
+          rotate: [0, -20, 0, -20, 0],
+          transition: {
+            duration: 1,
+            repeat: Infinity,
+            ease: "steps(3)",
+            delay: delay + 0.35
           }
         }
       }
@@ -343,6 +561,8 @@ const DancingStickman: React.FC<DancingStickmanProps> = ({ isVisible, onClose })
         animate={{ 
           opacity: 1, 
           scale: 1,
+          x: currentAnimation.movement.x,
+          y: currentAnimation.movement.y,
           transition: { 
             duration: 0.5,
             delay: delay,
@@ -396,40 +616,76 @@ const DancingStickman: React.FC<DancingStickmanProps> = ({ isVisible, onClose })
             {/* Körper */}
             <line x1="60" y1="60" x2="60" y2="120" stroke={color} strokeWidth="4" />
             
-            {/* Linker Arm */}
+            {/* Linker Arm - Oberarm */}
             <motion.line 
-              x1="60" y1="80" x2="30" y2="100" 
+              x1="60" y1="80" x2="30" y2="90" 
               stroke={color} 
               strokeWidth="4"
               animate={currentAnimation.leftArm}
               style={{ originX: "60px", originY: "80px" }}
             />
             
-            {/* Rechter Arm */}
+            {/* Linker Arm - Unterarm mit Ellbogen */}
             <motion.line 
-              x1="60" y1="80" x2="90" y2="100" 
+              x1="30" y1="90" x2="15" y2="100" 
+              stroke={color} 
+              strokeWidth="4"
+              animate={currentAnimation.leftElbow}
+              style={{ originX: "30px", originY: "90px" }}
+            />
+            
+            {/* Rechter Arm - Oberarm */}
+            <motion.line 
+              x1="60" y1="80" x2="90" y2="90" 
               stroke={color} 
               strokeWidth="4"
               animate={currentAnimation.rightArm}
               style={{ originX: "60px", originY: "80px" }}
             />
             
-            {/* Linkes Bein */}
+            {/* Rechter Arm - Unterarm mit Ellbogen */}
             <motion.line 
-              x1="60" y1="120" x2="30" y2="180" 
+              x1="90" y1="90" x2="105" y2="100" 
+              stroke={color} 
+              strokeWidth="4"
+              animate={currentAnimation.rightElbow}
+              style={{ originX: "90px", originY: "90px" }}
+            />
+            
+            {/* Linkes Bein - Oberschenkel */}
+            <motion.line 
+              x1="60" y1="120" x2="40" y2="150" 
               stroke={color} 
               strokeWidth="4"
               animate={currentAnimation.leftLeg}
               style={{ originX: "60px", originY: "120px" }}
             />
             
-            {/* Rechtes Bein */}
+            {/* Linkes Bein - Unterschenkel mit Knie */}
             <motion.line 
-              x1="60" y1="120" x2="90" y2="180" 
+              x1="40" y1="150" x2="30" y2="180" 
+              stroke={color} 
+              strokeWidth="4"
+              animate={currentAnimation.leftKnee}
+              style={{ originX: "40px", originY: "150px" }}
+            />
+            
+            {/* Rechtes Bein - Oberschenkel */}
+            <motion.line 
+              x1="60" y1="120" x2="80" y2="150" 
               stroke={color} 
               strokeWidth="4"
               animate={currentAnimation.rightLeg}
               style={{ originX: "60px", originY: "120px" }}
+            />
+            
+            {/* Rechtes Bein - Unterschenkel mit Knie */}
+            <motion.line 
+              x1="80" y1="150" x2="90" y2="180" 
+              stroke={color} 
+              strokeWidth="4"
+              animate={currentAnimation.rightKnee}
+              style={{ originX: "80px", originY: "150px" }}
             />
             
             {/* Accessoires basierend auf Stil */}
@@ -597,7 +853,7 @@ const DancingStickman: React.FC<DancingStickmanProps> = ({ isVisible, onClose })
               <StickFigure 
                 color="#EF4444" 
                 style="fight" 
-                position={{ x: -200, y: 50 }} 
+                position={{ x: -150, y: 50 }} 
                 scale={1}
                 delay={0.2}
               />
@@ -606,7 +862,7 @@ const DancingStickman: React.FC<DancingStickmanProps> = ({ isVisible, onClose })
               <StickFigure 
                 color="#10B981" 
                 style="breakdance" 
-                position={{ x: 200, y: 50 }} 
+                position={{ x: 150, y: 50 }} 
                 scale={1}
                 delay={0.4}
               />
@@ -615,7 +871,7 @@ const DancingStickman: React.FC<DancingStickmanProps> = ({ isVisible, onClose })
               <StickFigure 
                 color="#3B82F6" 
                 style="robot" 
-                position={{ x: 0, y: -150 }} 
+                position={{ x: 0, y: -100 }} 
                 scale={0.9}
                 delay={0.6}
               />
@@ -624,7 +880,7 @@ const DancingStickman: React.FC<DancingStickmanProps> = ({ isVisible, onClose })
               <StickFigure 
                 color="#F59E0B" 
                 style="fight" 
-                position={{ x: -150, y: 150 }} 
+                position={{ x: -100, y: 100 }} 
                 scale={0.8}
                 delay={0.8}
               />
@@ -633,7 +889,7 @@ const DancingStickman: React.FC<DancingStickmanProps> = ({ isVisible, onClose })
               <StickFigure 
                 color="#8B5CF6" 
                 style="dance" 
-                position={{ x: 150, y: 150 }} 
+                position={{ x: 100, y: 100 }} 
                 scale={0.8}
                 delay={1}
               />
