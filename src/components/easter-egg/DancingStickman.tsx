@@ -48,198 +48,6 @@ const DancingStickman: React.FC<DancingStickmanProps> = ({ isVisible, onClose })
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [isVisible, onClose]);
   
-  // Varianten für die Strichmännchen-Animation
-  const stickmanVariants = {
-    hidden: { opacity: 0, scale: 0 },
-    visible: { 
-      opacity: 1, 
-      scale: 1,
-      transition: { 
-        duration: 0.5,
-        type: "spring",
-        stiffness: 300,
-        damping: 15
-      }
-    },
-    dance: {
-      y: [0, -30, 0, -20, 0],
-      rotate: [0, -15, 0, 15, 0],
-      transition: {
-        duration: 2,
-        repeat: Infinity,
-        ease: "easeInOut"
-      }
-    },
-    exit: {
-      opacity: 0,
-      scale: 0,
-      transition: { duration: 0.5 }
-    }
-  };
-  
-  // Varianten für die Kampf-Animation
-  const fightVariants = {
-    hidden: { opacity: 0, scale: 0 },
-    visible: { 
-      opacity: 1, 
-      scale: 1,
-      transition: { 
-        duration: 0.5,
-        type: "spring",
-        stiffness: 300,
-        damping: 15
-      }
-    },
-    fight: {
-      x: [0, 20, -20, 10, -10, 0],
-      y: [0, -10, 0, -5, 0],
-      rotate: [0, 5, -5, 3, -3, 0],
-      transition: {
-        duration: 1.5,
-        repeat: Infinity,
-        ease: "easeInOut"
-      }
-    },
-    exit: {
-      opacity: 0,
-      scale: 0,
-      transition: { duration: 0.5 }
-    }
-  };
-  
-  // Varianten für die Breakdance-Animation
-  const breakdanceVariants = {
-    hidden: { opacity: 0, scale: 0 },
-    visible: { 
-      opacity: 1, 
-      scale: 1,
-      transition: { 
-        duration: 0.5,
-        type: "spring",
-        stiffness: 300,
-        damping: 15
-      }
-    },
-    breakdance: {
-      rotateY: [0, 180, 360],
-      y: [0, -20, 0],
-      transition: {
-        duration: 2,
-        repeat: Infinity,
-        ease: "easeInOut"
-      }
-    },
-    exit: {
-      opacity: 0,
-      scale: 0,
-      transition: { duration: 0.5 }
-    }
-  };
-  
-  // Varianten für die Roboter-Animation
-  const robotVariants = {
-    hidden: { opacity: 0, scale: 0 },
-    visible: { 
-      opacity: 1, 
-      scale: 1,
-      transition: { 
-        duration: 0.5,
-        type: "spring",
-        stiffness: 300,
-        damping: 15
-      }
-    },
-    robot: {
-      x: [0, 10, 10, 0, -10, -10, 0],
-      rotate: [0, 5, 0, -5, 0],
-      transition: {
-        duration: 2,
-        repeat: Infinity,
-        ease: "steps(5)"
-      }
-    },
-    exit: {
-      opacity: 0,
-      scale: 0,
-      transition: { duration: 0.5 }
-    }
-  };
-  
-  // Varianten für die Arm-Animation
-  const armVariants = {
-    dance: {
-      rotate: [0, 45, 0, -45, 0, 90, 0, -90, 0],
-      transition: {
-        duration: 3,
-        repeat: Infinity,
-        ease: "easeInOut"
-      }
-    },
-    fight: {
-      rotate: [0, 90, 45, 90, 0, -90, -45, -90, 0],
-      x: [0, 10, 0, -10, 0],
-      transition: {
-        duration: 1.5,
-        repeat: Infinity,
-        ease: "easeInOut"
-      }
-    },
-    breakdance: {
-      rotate: [0, 180, 90, 180, 0],
-      transition: {
-        duration: 2,
-        repeat: Infinity,
-        ease: "easeInOut"
-      }
-    },
-    robot: {
-      rotate: [0, 90, 90, 0, -90, -90, 0],
-      transition: {
-        duration: 2,
-        repeat: Infinity,
-        ease: "steps(5)"
-      }
-    }
-  };
-  
-  // Varianten für die Bein-Animation
-  const legVariants = {
-    dance: {
-      rotate: [0, 30, 0, -30, 0, 45, 0, -45, 0],
-      transition: {
-        duration: 3,
-        repeat: Infinity,
-        ease: "easeInOut",
-        delay: 0.2
-      }
-    },
-    fight: {
-      rotate: [0, 60, 30, 60, 0, -60, -30, -60, 0],
-      y: [0, -5, 0, -5, 0],
-      transition: {
-        duration: 1.5,
-        repeat: Infinity,
-        ease: "easeInOut"
-      }
-    },
-    breakdance: {
-      rotate: [0, 90, 180, 90, 0],
-      transition: {
-        duration: 2,
-        repeat: Infinity,
-        ease: "easeInOut"
-      }
-    },
-    robot: {
-      rotate: [0, 45, 45, 0, -45, -45, 0],
-      transition: {
-        duration: 2,
-        repeat: Infinity,
-        ease: "steps(5)"
-      }
-    }
-  };
-  
   // Varianten für die Discokugel-Animation
   const discoBallVariants = {
     hidden: { y: -200, opacity: 0 },
@@ -310,116 +118,355 @@ const DancingStickman: React.FC<DancingStickmanProps> = ({ isVisible, onClose })
       transition: { duration: 0.5 }
     }
   };
-  
-  // Funktion zum Erstellen eines Strichmännchens
-  const renderStickman = (
-    position: { x: number, y: number }, 
-    scale: number = 1, 
-    color: string = "white", 
-    animationType: "dance" | "fight" | "breakdance" | "robot" = "dance",
-    accessories: { hasSunglasses?: boolean, hasBowtie?: boolean, hasHat?: boolean, hasWeapon?: boolean } = {}
-  ) => {
-    const variants = 
-      animationType === "fight" ? fightVariants :
-      animationType === "breakdance" ? breakdanceVariants :
-      animationType === "robot" ? robotVariants :
-      stickmanVariants;
-    
+
+  // SVG-Strichmännchen-Komponente
+  const StickFigure = ({ 
+    color = "#FFFFFF", 
+    style = "dance" as "dance" | "fight" | "breakdance" | "robot", 
+    position = { x: 0, y: 0 },
+    scale = 1,
+    delay = 0
+  }: {
+    color?: string;
+    style?: "dance" | "fight" | "breakdance" | "robot";
+    position?: { x: number; y: number };
+    scale?: number;
+    delay?: number;
+  }) => {
+    // Verschiedene Animationsstile
+    const animations = {
+      dance: {
+        body: {
+          rotate: [0, -5, 0, 5, 0],
+          y: [0, -5, 0, -5, 0],
+          transition: {
+            duration: 2,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay
+          }
+        },
+        leftArm: {
+          rotate: [0, 30, 0, -30, 0],
+          transition: {
+            duration: 1.5,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: delay + 0.2
+          }
+        },
+        rightArm: {
+          rotate: [0, -30, 0, 30, 0],
+          transition: {
+            duration: 1.5,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: delay + 0.2
+          }
+        },
+        leftLeg: {
+          rotate: [0, 20, 0, -10, 0],
+          transition: {
+            duration: 1.5,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: delay + 0.1
+          }
+        },
+        rightLeg: {
+          rotate: [0, -10, 0, 20, 0],
+          transition: {
+            duration: 1.5,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: delay + 0.1
+          }
+        }
+      },
+      fight: {
+        body: {
+          rotate: [0, 5, -5, 5, 0],
+          x: [0, 10, -10, 5, 0],
+          transition: {
+            duration: 1.2,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay
+          }
+        },
+        leftArm: {
+          rotate: [0, 60, 90, 60, 0],
+          transition: {
+            duration: 0.8,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: delay + 0.1
+          }
+        },
+        rightArm: {
+          rotate: [0, -90, -60, -90, 0],
+          transition: {
+            duration: 0.8,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: delay + 0.2
+          }
+        },
+        leftLeg: {
+          rotate: [0, 30, 0, 10, 0],
+          transition: {
+            duration: 1.2,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: delay + 0.1
+          }
+        },
+        rightLeg: {
+          rotate: [0, -10, 0, -30, 0],
+          transition: {
+            duration: 1.2,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: delay + 0.2
+          }
+        }
+      },
+      breakdance: {
+        body: {
+          rotate: [0, 180, 360],
+          y: [0, -10, 0],
+          transition: {
+            duration: 2,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay
+          }
+        },
+        leftArm: {
+          rotate: [0, 90, 180, 90, 0],
+          transition: {
+            duration: 2,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: delay + 0.2
+          }
+        },
+        rightArm: {
+          rotate: [0, -90, -180, -90, 0],
+          transition: {
+            duration: 2,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: delay + 0.2
+          }
+        },
+        leftLeg: {
+          rotate: [0, 90, 0, 45, 0],
+          transition: {
+            duration: 2,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: delay + 0.1
+          }
+        },
+        rightLeg: {
+          rotate: [0, -45, 0, -90, 0],
+          transition: {
+            duration: 2,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: delay + 0.1
+          }
+        }
+      },
+      robot: {
+        body: {
+          y: [0, -5, 0, -5, 0],
+          transition: {
+            duration: 1,
+            repeat: Infinity,
+            ease: "steps(3)",
+            delay
+          }
+        },
+        leftArm: {
+          rotate: [0, 90, 0, 90, 0],
+          transition: {
+            duration: 1,
+            repeat: Infinity,
+            ease: "steps(3)",
+            delay: delay + 0.2
+          }
+        },
+        rightArm: {
+          rotate: [0, -90, 0, -90, 0],
+          transition: {
+            duration: 1,
+            repeat: Infinity,
+            ease: "steps(3)",
+            delay: delay + 0.4
+          }
+        },
+        leftLeg: {
+          rotate: [0, 30, 0, 30, 0],
+          transition: {
+            duration: 1,
+            repeat: Infinity,
+            ease: "steps(3)",
+            delay: delay + 0.1
+          }
+        },
+        rightLeg: {
+          rotate: [0, -30, 0, -30, 0],
+          transition: {
+            duration: 1,
+            repeat: Infinity,
+            ease: "steps(3)",
+            delay: delay + 0.3
+          }
+        }
+      }
+    };
+
+    const currentAnimation = animations[style];
+
     return (
       <motion.div
-        className="absolute z-50"
+        className="absolute"
         style={{ 
           top: `calc(50% + ${position.y}px)`, 
-          left: `calc(50% + ${position.x}px)`, 
-          transform: `translate(-50%, -50%) scale(${scale})` 
+          left: `calc(50% + ${position.x}px)`,
+          transform: `translate(-50%, -50%) scale(${scale})`,
+          zIndex: 60
         }}
-        variants={variants}
-        initial="hidden"
-        animate={["visible", animationType]}
-        exit="exit"
+        initial={{ opacity: 0, scale: 0 }}
+        animate={{ 
+          opacity: 1, 
+          scale: 1,
+          transition: { 
+            duration: 0.5,
+            delay: delay,
+            type: "spring"
+          }
+        }}
+        exit={{ opacity: 0, scale: 0 }}
       >
-        {/* Kopf */}
-        <motion.div className={`absolute top-0 left-1/2 -translate-x-1/2 w-20 h-20 rounded-full border-4 border-${color}`}>
-          {/* Gesicht */}
-          <div className={`absolute top-5 left-4 w-3 h-3 rounded-full bg-${color}`}></div>
-          <div className={`absolute top-5 right-4 w-3 h-3 rounded-full bg-${color}`}></div>
-          <div className={`absolute bottom-5 left-1/2 -translate-x-1/2 w-8 h-1 bg-${color} rounded-full`}></div>
-        </motion.div>
-        
-        {/* Körper */}
-        <motion.div className={`absolute top-20 left-1/2 -translate-x-1/2 w-4 h-30 bg-${color}`}></motion.div>
-        
-        {/* Arme */}
-        <motion.div 
-          className={`absolute top-25 left-1/2 -translate-x-1/2 w-40 h-4 bg-${color} origin-center`}
-          animate={animationType}
-        >
-          {animationType === "dance" && <motion.div variants={armVariants} animate="dance" className="w-full h-full" />}
-          {animationType === "fight" && <motion.div variants={armVariants} animate="fight" className="w-full h-full" />}
-          {animationType === "breakdance" && <motion.div variants={armVariants} animate="breakdance" className="w-full h-full" />}
-          {animationType === "robot" && <motion.div variants={armVariants} animate="robot" className="w-full h-full" />}
-        </motion.div>
-        
-        {/* Beine */}
-        <motion.div 
-          className={`absolute top-50 left-[calc(50%-20px)] w-4 h-30 bg-${color} origin-top`}
-          animate={animationType}
-        >
-          {animationType === "dance" && <motion.div variants={legVariants} animate="dance" className="w-full h-full" />}
-          {animationType === "fight" && <motion.div variants={legVariants} animate="fight" className="w-full h-full" />}
-          {animationType === "breakdance" && <motion.div variants={legVariants} animate="breakdance" className="w-full h-full" />}
-          {animationType === "robot" && <motion.div variants={legVariants} animate="robot" className="w-full h-full" />}
-        </motion.div>
-        <motion.div 
-          className={`absolute top-50 left-[calc(50%+16px)] w-4 h-30 bg-${color} origin-top`}
-          animate={animationType}
-          style={{ animationDelay: "0.5s" }}
-        >
-          {animationType === "dance" && <motion.div variants={legVariants} animate="dance" className="w-full h-full" />}
-          {animationType === "fight" && <motion.div variants={legVariants} animate="fight" className="w-full h-full" />}
-          {animationType === "breakdance" && <motion.div variants={legVariants} animate="breakdance" className="w-full h-full" />}
-          {animationType === "robot" && <motion.div variants={legVariants} animate="robot" className="w-full h-full" />}
-        </motion.div>
-        
-        {/* Accessoires */}
-        {accessories.hasSunglasses && (
-          <motion.div className="absolute top-6 left-1/2 -translate-x-1/2 w-24 h-6">
-            <div className="absolute top-0 left-0 w-10 h-5 rounded-full border-2 border-indigo-500 bg-indigo-500/50"></div>
-            <div className="absolute top-0 right-0 w-10 h-5 rounded-full border-2 border-indigo-500 bg-indigo-500/50"></div>
-            <div className="absolute top-2 left-1/2 -translate-x-1/2 w-4 h-1 bg-indigo-500"></div>
-          </motion.div>
-        )}
-        
-        {accessories.hasBowtie && (
-          <motion.div className="absolute top-20 left-1/2 -translate-x-1/2 w-10 h-5">
-            <div className="absolute top-0 left-0 w-4 h-4 bg-pink-500 rotate-45"></div>
-            <div className="absolute top-0 right-0 w-4 h-4 bg-pink-500 rotate-45"></div>
-            <div className="absolute top-1.5 left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-pink-700"></div>
-          </motion.div>
-        )}
-        
-        {accessories.hasHat && (
-          <motion.div className="absolute top-[-15px] left-1/2 -translate-x-1/2 w-24 h-10">
-            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-24 h-2 rounded-full bg-red-500"></div>
-            <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-16 h-8 rounded-t-full bg-red-500"></div>
-          </motion.div>
-        )}
-        
-        {accessories.hasWeapon && (
-          <motion.div 
-            className="absolute top-30 right-[-30px] w-30 h-4 bg-yellow-500 origin-left"
-            animate={{
-              rotate: [0, 30, 0, -30, 0],
-              transition: {
-                duration: 1.5,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }
-            }}
+        <svg width="120" height="200" viewBox="0 0 120 200">
+          {/* Körper */}
+          <motion.g
+            animate={currentAnimation.body}
+            style={{ originX: "60px", originY: "60px" }}
           >
-            <div className="absolute right-0 top-[-3px] w-0 h-0 border-l-[10px] border-l-yellow-500 border-y-[5px] border-y-transparent"></div>
-          </motion.div>
-        )}
+            {/* Kopf */}
+            <circle cx="60" cy="40" r="20" stroke={color} strokeWidth="4" fill="none" />
+            
+            {/* Gesicht - optional */}
+            {style === "dance" && (
+              <>
+                <circle cx="52" cy="35" r="3" fill={color} /> {/* Linkes Auge */}
+                <circle cx="68" cy="35" r="3" fill={color} /> {/* Rechtes Auge */}
+                <path d="M50 45 Q60 55 70 45" stroke={color} strokeWidth="2" fill="none" /> {/* Lächeln */}
+              </>
+            )}
+            
+            {style === "fight" && (
+              <>
+                <circle cx="52" cy="35" r="3" fill={color} /> {/* Linkes Auge */}
+                <circle cx="68" cy="35" r="3" fill={color} /> {/* Rechtes Auge */}
+                <path d="M50 48 Q60 40 70 48" stroke={color} strokeWidth="2" fill="none" /> {/* Grimmig */}
+              </>
+            )}
+            
+            {style === "breakdance" && (
+              <>
+                <circle cx="52" cy="35" r="3" fill={color} /> {/* Linkes Auge */}
+                <circle cx="68" cy="35" r="3" fill={color} /> {/* Rechtes Auge */}
+                <path d="M52 45 L68 45" stroke={color} strokeWidth="2" /> {/* Neutraler Mund */}
+              </>
+            )}
+            
+            {style === "robot" && (
+              <>
+                <rect x="50" y="32" width="4" height="6" fill={color} /> {/* Linkes Auge */}
+                <rect x="66" y="32" width="4" height="6" fill={color} /> {/* Rechtes Auge */}
+                <path d="M50 45 L70 45" stroke={color} strokeWidth="2" /> {/* Gerader Mund */}
+              </>
+            )}
+            
+            {/* Körper */}
+            <line x1="60" y1="60" x2="60" y2="120" stroke={color} strokeWidth="4" />
+            
+            {/* Linker Arm */}
+            <motion.line 
+              x1="60" y1="80" x2="30" y2="100" 
+              stroke={color} 
+              strokeWidth="4"
+              animate={currentAnimation.leftArm}
+              style={{ originX: "60px", originY: "80px" }}
+            />
+            
+            {/* Rechter Arm */}
+            <motion.line 
+              x1="60" y1="80" x2="90" y2="100" 
+              stroke={color} 
+              strokeWidth="4"
+              animate={currentAnimation.rightArm}
+              style={{ originX: "60px", originY: "80px" }}
+            />
+            
+            {/* Linkes Bein */}
+            <motion.line 
+              x1="60" y1="120" x2="30" y2="180" 
+              stroke={color} 
+              strokeWidth="4"
+              animate={currentAnimation.leftLeg}
+              style={{ originX: "60px", originY: "120px" }}
+            />
+            
+            {/* Rechtes Bein */}
+            <motion.line 
+              x1="60" y1="120" x2="90" y2="180" 
+              stroke={color} 
+              strokeWidth="4"
+              animate={currentAnimation.rightLeg}
+              style={{ originX: "60px", originY: "120px" }}
+            />
+            
+            {/* Accessoires basierend auf Stil */}
+            {style === "dance" && (
+              <>
+                {/* Sonnenbrille */}
+                <rect x="45" y="30" width="30" height="8" rx="2" fill="#6366F1" />
+                <line x1="60" y1="30" x2="60" y2="38" stroke="#6366F1" strokeWidth="1" />
+              </>
+            )}
+            
+            {style === "fight" && (
+              <>
+                {/* Stirnband */}
+                <path d="M40 30 Q60 25 80 30" stroke="#EF4444" strokeWidth="3" fill="none" />
+                <path d="M80 30 L85 25" stroke="#EF4444" strokeWidth="3" fill="none" />
+              </>
+            )}
+            
+            {style === "breakdance" && (
+              <>
+                {/* Kappe */}
+                <path d="M40 25 Q60 15 80 25 L75 30 Q60 20 45 30 Z" fill="#10B981" />
+              </>
+            )}
+            
+            {style === "robot" && (
+              <>
+                {/* Antennen */}
+                <line x1="55" y1="20" x2="50" y2="10" stroke={color} strokeWidth="2" />
+                <circle cx="50" cy="8" r="2" fill={color} />
+                <line x1="65" y1="20" x2="70" y2="10" stroke={color} strokeWidth="2" />
+                <circle cx="70" cy="8" r="2" fill={color} />
+              </>
+            )}
+          </motion.g>
+        </svg>
       </motion.div>
     );
   };
@@ -538,116 +585,67 @@ const DancingStickman: React.FC<DancingStickmanProps> = ({ isVisible, onClose })
           {partyMode ? (
             <>
               {/* Hauptstrichmännchen in der Mitte */}
-              {renderStickman(
-                { x: 0, y: 0 }, 
-                1.2, 
-                "white", 
-                "dance", 
-                { hasSunglasses: true, hasBowtie: true }
-              )}
+              <StickFigure 
+                color="#FFFFFF" 
+                style="dance" 
+                position={{ x: 0, y: 0 }} 
+                scale={1.2}
+                delay={0}
+              />
               
               {/* Kampf-Strichmännchen links */}
-              {renderStickman(
-                { x: -200, y: 50 }, 
-                0.9, 
-                "yellow-400", 
-                "fight", 
-                { hasWeapon: true, hasHat: true }
-              )}
+              <StickFigure 
+                color="#EF4444" 
+                style="fight" 
+                position={{ x: -200, y: 50 }} 
+                scale={1}
+                delay={0.2}
+              />
               
               {/* Breakdance-Strichmännchen rechts */}
-              {renderStickman(
-                { x: 200, y: 50 }, 
-                0.9, 
-                "green-400", 
-                "breakdance", 
-                { hasSunglasses: true }
-              )}
+              <StickFigure 
+                color="#10B981" 
+                style="breakdance" 
+                position={{ x: 200, y: 50 }} 
+                scale={1}
+                delay={0.4}
+              />
               
               {/* Roboter-Strichmännchen oben */}
-              {renderStickman(
-                { x: 0, y: -150 }, 
-                0.8, 
-                "blue-400", 
-                "robot", 
-                { hasSunglasses: true }
-              )}
+              <StickFigure 
+                color="#3B82F6" 
+                style="robot" 
+                position={{ x: 0, y: -150 }} 
+                scale={0.9}
+                delay={0.6}
+              />
               
               {/* Kampf-Strichmännchen unten links */}
-              {renderStickman(
-                { x: -150, y: 150 }, 
-                0.7, 
-                "red-400", 
-                "fight", 
-                { hasWeapon: true }
-              )}
+              <StickFigure 
+                color="#F59E0B" 
+                style="fight" 
+                position={{ x: -150, y: 150 }} 
+                scale={0.8}
+                delay={0.8}
+              />
               
               {/* Tanzender Strichmännchen unten rechts */}
-              {renderStickman(
-                { x: 150, y: 150 }, 
-                0.7, 
-                "purple-400", 
-                "dance", 
-                { hasHat: true }
-              )}
+              <StickFigure 
+                color="#8B5CF6" 
+                style="dance" 
+                position={{ x: 150, y: 150 }} 
+                scale={0.8}
+                delay={1}
+              />
             </>
           ) : (
             // Einzelnes Strichmännchen vor der Party
-            <motion.div
-              className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50 w-80 h-80"
-              variants={stickmanVariants}
-              initial="hidden"
-              animate={["visible", "dance"]}
-              exit="exit"
-            >
-              {/* Kopf */}
-              <motion.div className="absolute top-0 left-1/2 -translate-x-1/2 w-20 h-20 rounded-full border-4 border-white">
-                {/* Gesicht */}
-                <div className="absolute top-5 left-4 w-3 h-3 rounded-full bg-white"></div>
-                <div className="absolute top-5 right-4 w-3 h-3 rounded-full bg-white"></div>
-                <div className="absolute bottom-5 left-1/2 -translate-x-1/2 w-8 h-1 bg-white rounded-full"></div>
-              </motion.div>
-              
-              {/* Körper */}
-              <motion.div className="absolute top-20 left-1/2 -translate-x-1/2 w-4 h-30 bg-white"></motion.div>
-              
-              {/* Arme */}
-              <motion.div 
-                className="absolute top-25 left-1/2 -translate-x-1/2 w-40 h-4 bg-white origin-center"
-                animate="dance"
-              >
-                <motion.div variants={armVariants} animate="dance" className="w-full h-full" />
-              </motion.div>
-              
-              {/* Beine */}
-              <motion.div 
-                className="absolute top-50 left-[calc(50%-20px)] w-4 h-30 bg-white origin-top"
-                animate="dance"
-              >
-                <motion.div variants={legVariants} animate="dance" className="w-full h-full" />
-              </motion.div>
-              <motion.div 
-                className="absolute top-50 left-[calc(50%+16px)] w-4 h-30 bg-white origin-top"
-                animate="dance"
-                style={{ animationDelay: "0.5s" }}
-              >
-                <motion.div variants={legVariants} animate="dance" className="w-full h-full" />
-              </motion.div>
-              
-              {/* Sonnenbrille */}
-              <motion.div className="absolute top-6 left-1/2 -translate-x-1/2 w-24 h-6">
-                <div className="absolute top-0 left-0 w-10 h-5 rounded-full border-2 border-indigo-500 bg-indigo-500/50"></div>
-                <div className="absolute top-0 right-0 w-10 h-5 rounded-full border-2 border-indigo-500 bg-indigo-500/50"></div>
-                <div className="absolute top-2 left-1/2 -translate-x-1/2 w-4 h-1 bg-indigo-500"></div>
-              </motion.div>
-              
-              {/* Fliege */}
-              <motion.div className="absolute top-20 left-1/2 -translate-x-1/2 w-10 h-5">
-                <div className="absolute top-0 left-0 w-4 h-4 bg-pink-500 rotate-45"></div>
-                <div className="absolute top-0 right-0 w-4 h-4 bg-pink-500 rotate-45"></div>
-                <div className="absolute top-1.5 left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-pink-700"></div>
-              </motion.div>
-            </motion.div>
+            <StickFigure 
+              color="#FFFFFF" 
+              style="dance" 
+              position={{ x: 0, y: 0 }} 
+              scale={1.2}
+            />
           )}
           
           {/* Party-Hinweis */}
